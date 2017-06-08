@@ -1,1 +1,1 @@
-# Java SE - practice: 1-6
+# Java SE - practice
