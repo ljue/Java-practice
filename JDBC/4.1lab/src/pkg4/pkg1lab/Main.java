@@ -34,21 +34,13 @@ public class Main {
         
         
         
-        try {
-            //Class.forName("com.mysql.jdbc.Driver").newInstance();
-            //conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb"+"user=dbuser&password=dbpassword");
-            
-            //Class.forName("org.postgresql.Driver");
-            //conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/dbname","alex", "123456");
-            //connection.close();
-            
-            
+        try {            
             Class.forName("org.apache.derby.jdbc.EmbeddedDriver").newInstance();
             try ( Connection conn = DriverManager.getConnection("jdbc:derby:myDB;create=true")) {
             
             if (conn == null) {
                 System.out.println("Нет соединения с БД!");
-                System.exit(0);
+                System.exit(1);
             }
             
             
@@ -104,7 +96,6 @@ public class Main {
                     formatter.applyPattern("yyyy-MM-dd");
                     String strDate = formatter.format(date);
                     java.sql.Timestamp timeStampDate = Timestamp.valueOf(strDate + " " + tmp[3]);
-                    //System.out.println(timeStampDate.toString());
 
                     String regInsert = "INSERT INTO REGISTRATION"
                         + "(CODE, ID, ROLE, DATE) " + "VALUES"
