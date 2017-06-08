@@ -33,7 +33,7 @@ public class Main {
         
         
         
-        Connection conn = null;
+        
         try {
             //Class.forName("com.mysql.jdbc.Driver").newInstance();
             //conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb"+"user=dbuser&password=dbpassword");
@@ -44,7 +44,7 @@ public class Main {
             
             
             Class.forName("org.apache.derby.jdbc.EmbeddedDriver").newInstance();
-            conn = DriverManager.getConnection("jdbc:derby:myDB;create=true");
+            try ( Connection conn = DriverManager.getConnection("jdbc:derby:myDB;create=true")) {
             
             if (conn == null) {
                 System.out.println("Нет соединения с БД!");
@@ -166,6 +166,7 @@ public class Main {
             
             
             stmt.close();
+            }
     
             
         } catch (SQLException ex) {
