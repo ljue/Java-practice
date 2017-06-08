@@ -35,9 +35,7 @@ public class Main {
                 
                 
                 str = str.replaceAll("<head>([\\w\\W]*)</head>", "");
-                //System.out.print(str);
                 str = str.replaceAll("<script([\\w\\W]*?)</script>", "");
-                //System.out.print(str);
                 str = str.replaceAll("<[^>]+>", "");
                 str = str.replaceAll("[ \t]+", " ");
                 str = str.replaceAll("(?m)^[\\n\\t\\s]*$", "");
